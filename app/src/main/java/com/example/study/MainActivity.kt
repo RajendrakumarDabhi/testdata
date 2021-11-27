@@ -28,8 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnAdd.setOnClickListener {
             GlobalScope.launch {
-                var items =  viewModel.getItembyName(binding.edtName.toString())
-
+                var items =  viewModel.getItembyName(binding.edtName.toString().trim())
                 insertData(items)
             }
         }
