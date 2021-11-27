@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnAdd.setOnClickListener {
             GlobalScope.launch {
-                var items =  viewModel.getItembyName(binding.edtName.toString().trim())
+                var items =  viewModel.getItembyName(binding.edtName.text.toString().trim())
                 insertData(items)
             }
         }
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
         if (items != null && items.size > 0) {
             var mqty = getQuentitytoUpdate(qty)
-            viewModel.updateItem(items.get(0).itemName,mqty)
+            viewModel.updateItem(items.get(0).itemName,items.get(0).quantityInStock)
         } else {
             var tcost = qty * cost
             val item = Item(name, cost, qty, tcost,System.currentTimeMillis(),isPurchase())
