@@ -45,8 +45,8 @@ class MainActivity : AppCompatActivity() {
         val qty = binding.edtQuantity.text.toString().toInt()
 
         if (items != null && items.size > 0) {
-            var mqty = getQuentitytoUpdate(qty)
-            viewModel.updateItem(items.get(0).itemName,items.get(0).quantityInStock)
+            var mqty = getQuentitytoUpdate(items.get(0).quantityInStock)
+            viewModel.updateItem(items.get(0).itemName,mqty)
         } else {
             var tcost = qty * cost
             val item = Item(name, cost, qty, tcost,System.currentTimeMillis(),isPurchase())
