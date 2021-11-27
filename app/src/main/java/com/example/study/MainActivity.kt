@@ -1,18 +1,16 @@
 package com.example.study
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View.GONE
-import android.view.View.VISIBLE
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.study.data.Item
 import com.example.study.databinding.ActivityMainBinding
 import com.example.study.viewmodel.MainViewModel
 import com.example.study.viewmodel.ViewModelFactory
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -29,8 +27,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.btnAdd.setOnClickListener {
-            lifecycleScope.launchWhenCreated {
-                insertData()
+            GlobalScope.launch {
+                var items =  viewModel.getItembyName(binding.edtName.toString())
+
+                insertData(items)
             }
         }
         binding.btnShow.setOnClickListener {
@@ -40,11 +40,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    suspend fun insertData() {
-        var items = viewModel.getItembyName(binding.edtName.toString())
+    suspend fun insertData(items: MutableList<Item>) {
         val name = binding.edtName.text.toString()
-        val cost = binding.edtName.text.toString().toDouble()
-        val qty = binding.edtName.text.toString().toInt()
+        val cost = binding.edtCost.text.toString().toDouble()
+        val qty = binding.edtQuantity.text.toString().toInt()
 
         if (items != null && items.size > 0) {
             var mqty = getQuentitytoUpdate(qty)

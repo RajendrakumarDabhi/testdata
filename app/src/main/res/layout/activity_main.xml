@@ -90,8 +90,9 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
         android:ems="10"
+        android:text="0"
         android:inputType="textPersonName"
-        android:text="Cost"
+        android:hint="Cost"
         app:layout_constraintStart_toEndOf="@+id/txt_cost"
         app:layout_constraintTop_toBottomOf="@+id/edt_name" />
 
@@ -102,8 +103,9 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="32dp"
         android:ems="10"
+        android:text="0"
         android:inputType="textPersonName"
-        android:text="Quantity"
+        android:hint="Quantity"
         app:layout_constraintStart_toEndOf="@+id/txt_quantity"
         app:layout_constraintTop_toBottomOf="@+id/edt_cost" />
 
@@ -115,7 +117,7 @@
         android:layout_marginTop="32dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Total cost"
+        android:text="0"
         app:layout_constraintStart_toEndOf="@+id/txt_tot_cost"
         app:layout_constraintTop_toBottomOf="@+id/edt_quantity" />
 

@@ -11,6 +11,8 @@ import com.example.study.data.InventoryItem
 import com.example.study.databinding.ActivityInventoryReportBinding
 import com.example.study.viewmodel.InventoryViewModel
 import com.example.study.viewmodel.ViewModelFactory
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class InventoryReportActivity : AppCompatActivity() {
     private lateinit var viewModel : InventoryViewModel
@@ -36,7 +38,7 @@ class InventoryReportActivity : AppCompatActivity() {
     }
 
     private fun getItem(item: InventoryItem){
-        lifecycleScope.launchWhenCreated {
+        GlobalScope.launch {
 
          val data = viewModel.getItemList()
             adapter.updateData(data)
